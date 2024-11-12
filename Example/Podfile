@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'APIServiceLayer_Example' do
+  pod 'APIServiceLayer', :path => '../'
+
+  target 'APIServiceLayer_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
