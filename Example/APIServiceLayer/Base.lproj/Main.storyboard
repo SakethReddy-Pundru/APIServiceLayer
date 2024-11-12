@@ -1,30 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GSI-al-qms">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <scene sceneID="gna-Gf-Qts">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="APIServiceLayer_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GSI-al-qms" customClass="ViewController" customModule="NetworkLayer_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="g4d-kL-fY3"/>
+                        <viewControllerLayoutGuide type="bottom" id="yt2-Sz-hXQ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="aNU-b8-Ts7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="56U-kV-kat">
+                                <rect key="frame" x="16" y="263" width="343" height="141"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vhc-HU-110">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="125"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="125" id="sWe-tU-vab"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WP9-pr-mnQ">
+                                        <rect key="frame" x="171.5" y="141" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="vhc-HU-110" firstAttribute="leading" secondItem="56U-kV-kat" secondAttribute="leadingMargin" id="7bi-7p-Q73"/>
+                                    <constraint firstAttribute="bottom" secondItem="vhc-HU-110" secondAttribute="bottom" constant="16" id="HtB-IP-Bw0"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNi-50-UrE">
+                                <rect key="frame" x="16" y="607" width="343" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="UnN-S0-IA5"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Refresh Data"/>
+                                <connections>
+                                    <action selector="refreshData:" destination="GSI-al-qms" eventType="touchUpInside" id="ALy-ry-FKV"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="56U-kV-kat" secondAttribute="trailing" constant="16" id="9Pp-dx-Tiz"/>
+                            <constraint firstItem="56U-kV-kat" firstAttribute="top" secondItem="g4d-kL-fY3" secondAttribute="bottom" priority="250" constant="16" id="HLq-EA-Us8"/>
+                            <constraint firstItem="56U-kV-kat" firstAttribute="centerX" secondItem="aNU-b8-Ts7" secondAttribute="centerX" id="ORC-sT-haw"/>
+                            <constraint firstItem="56U-kV-kat" firstAttribute="top" relation="greaterThanOrEqual" secondItem="g4d-kL-fY3" secondAttribute="bottom" constant="16" id="Ug7-x1-XE0"/>
+                            <constraint firstItem="56U-kV-kat" firstAttribute="leading" secondItem="aNU-b8-Ts7" secondAttribute="leading" constant="16" id="Y77-vF-6Jn"/>
+                            <constraint firstAttribute="trailing" secondItem="nNi-50-UrE" secondAttribute="trailing" constant="16" id="fak-9Y-OKR"/>
+                            <constraint firstItem="nNi-50-UrE" firstAttribute="leading" secondItem="aNU-b8-Ts7" secondAttribute="leading" constant="16" id="gEh-qj-wfw"/>
+                            <constraint firstItem="nNi-50-UrE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="56U-kV-kat" secondAttribute="bottom" constant="16" id="jNr-5w-ulx"/>
+                            <constraint firstItem="56U-kV-kat" firstAttribute="centerY" secondItem="aNU-b8-Ts7" secondAttribute="centerY" id="kN0-Z9-Aa8"/>
+                            <constraint firstItem="yt2-Sz-hXQ" firstAttribute="top" secondItem="nNi-50-UrE" secondAttribute="bottom" constant="25" id="u8I-Oa-dGA"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="vhc-HU-110" id="zYl-eU-jRW"/>
+                        <outlet property="lblError" destination="WP9-pr-mnQ" id="A98-KK-lxf"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GOB-b4-nGS" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-26" y="-36"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

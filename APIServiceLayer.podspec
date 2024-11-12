@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'APIServiceLayer'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of APIServiceLayer.'
+  s.summary          = 'APIServiceLayer is a Swift networking library that simplifies making API requests and handling responses.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  'NetworkLayer is a Swift networking library that simplifies making API requests and handling responses. It includes a singleton NetworkManager for global use, and an APIHandler class for managing network calls with Combine. The library supports reactive programming with Swift’s Combine framework, and provides clear, custom error handling through a NetworkError enum. It ensures easy-to-manage networking, clean data decoding, and error mapping, making it ideal for Swift applications that require robust network communication.'
                        DESC
 
   s.homepage         = 'https://github.com/SakethReddy-Pundru/APIServiceLayer'
@@ -28,9 +28,11 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/SakethReddy-Pundru/APIServiceLayer.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '16.0'
 
-  s.source_files = 'APIServiceLayer/Classes/**/*'
+  s.source_files = 'Classes/**/*.swift'
+  
+  s.swift_version = '5.0'
   
   # s.resource_bundles = {
   #   'APIServiceLayer' => ['APIServiceLayer/Assets/*.png']
