@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'APIServiceLayer'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'APIServiceLayer is a Swift networking library that simplifies making API requests and handling responses.'
 
 # This description is used to generate tags and improve search results.
