@@ -1,0 +1,6 @@
+framework module Pods_APIServiceLayer_Tests {
+  umbrella header "Pods-APIServiceLayer_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

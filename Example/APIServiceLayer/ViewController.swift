@@ -6,7 +6,6 @@
 //  Copyright (c) 2024 SakethReddy-Pundru. All rights reserved.
 //
 
-import Combine
 import UIKit
 
 class ViewController: UIViewController {
@@ -15,13 +14,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblError: UILabel!
     
     private let viewModel = ViewModel()
-    private var cancellables: Set<AnyCancellable> = []
     private let loader = UIActivityIndicatorView(activityIndicatorStyle: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLoader()
         fetchData()
+        viewModel.apiResponseDelegate = self
     }
     
     private func setupLoader() {
@@ -40,48 +39,6 @@ class ViewController: UIViewController {
     private func fetchData() {
         loader.startAnimating()
         viewModel.fetchData()
-        
-        viewModel.$modelData
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] modelData in
-                guard let self = self else { return }
-                if let data = modelData {
-                    guard let url = URL(string: data.message) else {
-                        self.lblError.text = "Invalid URL"
-                        self.loader.stopAnimating()
-                        return
-                    }
-                    // Download the image asynchronously
-                    URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-                        guard let self = self else { return }
-                        if let data = data, error == nil {
-                            DispatchQueue.main.async {
-                                self.imageView.image = UIImage(data: data)
-                                self.loader.stopAnimating()
-                            }
-                        } else {
-                            DispatchQueue.main.async {
-                                self.lblError.text = "Failed to load image: \(String(describing: error))"
-                                self.loader.stopAnimating()
-                            }
-                        }
-                    }.resume()
-                }
-            }
-            .store(in: &cancellables)
-        
-        viewModel.$errorMessage
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] errorMessage in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    if let message = errorMessage {
-                        self.lblError.text = "Error: \(message)"
-                    }
-                    self.loader.stopAnimating()
-                }
-            }
-            .store(in: &cancellables)
     }
     
     @IBAction func refreshData(_ sender: Any) {
@@ -94,5 +51,37 @@ class ViewController: UIViewController {
     }
 }
 
-
-
+extension ViewController: APIResponseDelegate {
+    func responseSuccess<T>(of imageURL: T) {
+        guard let urlString = imageURL as? String,
+                let url = URL(string: urlString) else {
+            self.lblError.text = "Invalid URL"
+            self.loader.stopAnimating()
+            return
+        }
+        // Download the image asynchronously
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+            if let data = data, error == nil {
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: data)
+                    self.loader.stopAnimating()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.lblError.text = "Failed to load image: \(String(describing: error))"
+                    self.loader.stopAnimating()
+                }
+            }
+        }.resume()
+    }
+    
+    
+    
+    func responseFailure(message: String) {
+        DispatchQueue.main.async {
+            self.lblError.text = "Error: \(message)"
+            self.loader.stopAnimating()
+        }
+    }
+}

@@ -49,7 +49,7 @@ public enum NetworkError: Error {
     /// Provides a human-readable error message corresponding to the `NetworkError`.
     ///
     /// - Returns: A `String` message describing the error.
-    var message: String {
+    public var message: String {
         switch self {
         case .badURL:
             return "The URL is invalid."
@@ -68,4 +68,3 @@ public enum NetworkError: Error {
         }
     }
 }
-

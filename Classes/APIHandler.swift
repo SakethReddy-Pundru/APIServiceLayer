@@ -23,13 +23,26 @@ class APIHandler {
         
         // Make the API request using URLSession and handle the response
         return URLSession.shared.dataTaskPublisher(for: request)
-            // Map the response to only the data
-            .map { $0.data }
-            // Map any errors to a `NetworkError`
-            .mapError { error in
-                return NetworkError.badURL
+        
+            .tryMap { data, response in
+                // Ensure the response is an HTTPURLResponse to access the status code
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw NetworkError.invalidResponse
+                }
+                
+                // Check the status code and handle errors based on common HTTP status codes
+                switch httpResponse.statusCode {
+                case 200...299:
+                    return data
+                default:
+                    throw NetworkError.statusCode(httpResponse.statusCode)
+                }
             }
-            // Type erase to return AnyPublisher
+        // Convert any `Error` to `NetworkError`
+            .mapError { error in
+                return error as? NetworkError ?? NetworkError.requestFailed(error)
+            }
+        // Type erase to return AnyPublisher
             .eraseToAnyPublisher()
     }
 }

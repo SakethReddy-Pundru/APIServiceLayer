@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GSI-al-qms">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GSI-al-qms">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="gna-Gf-Qts">
             <objects>
-                <viewController id="GSI-al-qms" customClass="ViewController" customModule="NetworkLayer_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GSI-al-qms" customClass="ViewController" customModule="APIServiceLayer_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g4d-kL-fY3"/>
                         <viewControllerLayoutGuide type="bottom" id="yt2-Sz-hXQ"/>
@@ -20,17 +20,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="56U-kV-kat">
-                                <rect key="frame" x="16" y="263" width="343" height="141"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="56U-kV-kat">
+                                <rect key="frame" x="16" y="200.5" width="343" height="266"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vhc-HU-110">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="125"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="125" id="sWe-tU-vab"/>
-                                        </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WP9-pr-mnQ">
-                                        <rect key="frame" x="171.5" y="141" width="0.0" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WP9-pr-mnQ">
+                                        <rect key="frame" x="0.0" y="141" width="343" height="125"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
@@ -38,7 +35,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="vhc-HU-110" firstAttribute="leading" secondItem="56U-kV-kat" secondAttribute="leadingMargin" id="7bi-7p-Q73"/>
-                                    <constraint firstAttribute="bottom" secondItem="vhc-HU-110" secondAttribute="bottom" constant="16" id="HtB-IP-Bw0"/>
+                                    <constraint firstAttribute="trailing" secondItem="WP9-pr-mnQ" secondAttribute="trailing" id="D42-tD-0Ch"/>
+                                    <constraint firstItem="WP9-pr-mnQ" firstAttribute="leading" secondItem="56U-kV-kat" secondAttribute="leading" id="o7N-bt-qQY"/>
+                                    <constraint firstAttribute="bottom" secondItem="WP9-pr-mnQ" secondAttribute="bottom" id="ucS-0L-RDE"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNi-50-UrE">

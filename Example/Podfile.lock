@@ -1,0 +1,16 @@
+PODS:
+  - APIServiceLayer (0.1.0)
+
+DEPENDENCIES:
+  - APIServiceLayer (from `../`)
+
+EXTERNAL SOURCES:
+  APIServiceLayer:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  APIServiceLayer: 9b6576db81bcde65b209c409196ea76d9b02c6fa
+
+PODFILE CHECKSUM: 3eeeb20ad8b8dd4fe44990b7d4700fa3ec0bbac7
+
+COCOAPODS: 1.16.2
